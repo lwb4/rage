@@ -1,6 +1,6 @@
 # rage
 
-Dynamic Representations of Clojure Abstract Syntax Trees.
+Visual representations of ClojureScript Abstract Syntax Trees.
 
 ## Overview
 
