@@ -1,0 +1,17 @@
+/* some style */
+
+#ast-output {
+  flex: 1;
+  margin-left: 1em;
+  height: 95vh;
+  overflow: scroll;
+}
+
+#code-input {
+  flex: 1;
+  height: 95vh;
+}
+
+#container {
+  display: flex;
+}
