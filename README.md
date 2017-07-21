@@ -1,40 +1,27 @@
 # rage
 
-FIXME: Write a one-line description of your library/project.
+Dynamic Representations of Clojure Abstract Syntax Trees.
 
 ## Overview
 
-FIXME: Write a paragraph about the library/project and highlight its goals.
+The goal of this project is to have a graphical representation of the AST of any ClojureScript code.
+
+As it stands, you can view the pretty-printed text version of the AST alongside your code.
+
+Milestones:
+1. Change the textarea to an actual code editor.
+2. Come up with a graphical way to represent ClojureScript ASTs.
+3. Add a canvas pane with drag/drop, zoom in/out.
+4. Move the textual AST to the bottom left, change the right pane to be the graphical AST.
 
 ## Setup
 
-To get an interactive development environment run:
-
-    lein figwheel
-
-and open your browser at [localhost:3449](http://localhost:3449/).
-This will auto compile and send all changes to the browser without the
-need to reload. After the compilation process is complete, you will
-get a Browser Connected REPL. An easy way to try it is:
-
-    (js/alert "Am I connected?")
-
-and you should see an alert in the browser window.
-
-To clean all compiled files:
-
-    lein clean
-
-To create a production build run:
-
-    lein do clean, cljsbuild once min
-
-And open your browser in `resources/public/index.html`. You will not
-get live reloading, nor a REPL. 
+`git clone ....`
+`cd rage`
+`lein figwheel`
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2017
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
-# rage
+Distributed under the Eclipse Public License version 1.0.
