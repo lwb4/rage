@@ -17,7 +17,9 @@ Milestones:
 ## Setup
 
 `git clone ....`
+
 `cd rage`
+
 `lein figwheel`
 
 ## License
