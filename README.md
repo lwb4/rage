@@ -1,6 +1,6 @@
 # rage
 
-Visual representations of ClojureScript Abstract Syntax Trees.
+Visual representations of ClojureScript Abstract Syntax Trees, in the browser.
 
 ## Overview
 
