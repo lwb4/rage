@@ -2,6 +2,10 @@
 
 Visual representations of ClojureScript Abstract Syntax Trees, in the browser.
 
+See it in action!
+* Live demo: http://vps124502.vps.ovh.ca/rage/resources/public/
+* URL shortened version to the above link: http://tiny.cc/cljs-ast
+
 ## Overview
 
 The goal of this project is to have a graphical representation of the AST of any ClojureScript code.
