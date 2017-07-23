@@ -1,15 +1,35 @@
 /* some style */
 
-#ast-output {
+body {
+  background: black;
+}
+
+#submit-bar {
+  background: #DADADA;
+  padding: .5em;
+}
+
+#right-pane {
   flex: 1;
   margin-left: 1em;
   height: 95vh;
   overflow: scroll;
+  background:white;
 }
 
-#code-input {
+#left-pane {
   flex: 1;
   height: 95vh;
+}
+
+#information-bar {
+  padding: .5em;
+  background: #DADADA;
+}
+
+#code-input + div {
+  border: 3px solid gray;
+  font-size: larger;
 }
 
 #container {
