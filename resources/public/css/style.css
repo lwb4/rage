@@ -4,9 +4,31 @@ body {
   background: darkgray;
 }
 
+#loading {
+  font-size: larger;
+}
+
 #submit-bar {
   background: #DADADA;
   padding: .5em;
+  display: flex;
+}
+
+#submit-bar input {
+  align-self: flex-start;
+}
+
+#github-link {
+  padding-left: 1em;
+}
+
+#submit-bar input + div {
+  margin-left: auto;
+}
+
+#submit-bar a {
+  color: black;
+  text-decoration: none;
 }
 
 #right-pane {
@@ -34,4 +56,8 @@ body {
 
 #container {
   display: flex;
+}
+
+#ast-output {
+  padding: 0 1em;
 }

@@ -11,7 +11,7 @@
 
 (defn information-bar []
   [:div#information-bar
-    "Type some ClojureScript into the box below. Click Submit to see the AST."])
+    "Type some ClojureScript into the box below. Press Submit to see the Abstract Syntax Tree."])
 
 (defn editor-did-mount []
   (fn [this]
@@ -32,7 +32,8 @@
 (defn submit-bar []
   [:div#submit-bar
     [:input {:type "submit"
-             :on-click #(reset! ast-text (with-out-str (pp/pprint (ast @source-code))))}]])
+             :on-click #(reset! ast-text (with-out-str (pp/pprint (ast @source-code))))}]
+    [:div#github-link>a {:href "https://github.com/lincoln-b/rage"} "view the source for this page"]])
 
 (defn ast-output-area []
   [:div#ast-output>pre
