@@ -45,7 +45,7 @@
 (defn ast-output-area []
   (reagent/create-class
     {:render (fn [] [:div#ast-output {:ref "tree"}])
-     :component-did-mount #(reset! json-div (js/jQuery (reagent/dom-node %)))}))
+     :component-did-mount #(reset! json-div ((js* "$") (reagent/dom-node %)))}))
 
 (defn left-pane []
   [:div#left-pane
