@@ -28,7 +28,7 @@
 
 (defn ast [code-str]
   (try
-    (to-ast (reader/read-string code-str))
+    (clj->js (to-ast (reader/read-string code-str)))
     (catch js/Error e (str e))))
 
 ; (defn ast [code-str]

@@ -37,9 +37,6 @@ body {
   overflow: scroll;
 }
 
-#ast-output pre {
-}
-
 #left-pane {
   flex: 1;
   height: 95vh;
