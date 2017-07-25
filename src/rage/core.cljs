@@ -1,7 +1,7 @@
 (ns rage.core
   (:require
     [reagent.core :as reagent :refer [atom]]
-    [rage.utilities :refer [ast]]
+    [rage.utilities :refer [ast to-ast]]
     [clojure.pprint :as pp]))
 
 (enable-console-print!)
