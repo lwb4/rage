@@ -12,18 +12,12 @@ body {
   background: #DADADA;
   padding: .5em;
   display: flex;
-}
-
-#submit-bar input {
-  align-self: flex-start;
+  z-index: 1;
 }
 
 #github-link {
-  padding-left: 1em;
-}
-
-#submit-bar input + div {
-  margin-left: auto;
+  width: 100%;
+  text-align: right;
 }
 
 #submit-bar a {
@@ -34,9 +28,16 @@ body {
 #right-pane {
   flex: 1;
   margin-left: 1em;
-  height: 95vh;
+}
+
+#ast-output {
+  background: white;
+  height: 90vh;
+  padding: 0 1em;
   overflow: scroll;
-  background:white;
+}
+
+#ast-output pre {
 }
 
 #left-pane {
@@ -56,8 +57,4 @@ body {
 
 #container {
   display: flex;
-}
-
-#ast-output {
-  padding: 0 1em;
 }
