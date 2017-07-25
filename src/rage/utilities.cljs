@@ -27,7 +27,9 @@
         (ana/analyze env form)))))
 
 (defn ast [code-str]
-  (to-ast (reader/read-string code-str)))
+  (try
+    (to-ast (reader/read-string code-str))
+    (catch js/Error e (str e))))
 
 ; (defn ast [code-str]
 ;   (c/analyze-str
