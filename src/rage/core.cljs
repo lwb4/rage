@@ -7,7 +7,6 @@
 (enable-console-print!)
 
 (def source-code (atom ""))
-(def json-div (atom nil))
 
 (defn information-bar []
   [:div#information-bar
@@ -29,23 +28,14 @@
     {:render (fn [] [:textarea#code-input])
      :component-did-mount (editor-did-mount)}))
 
-; (let [tree-div ((js* "$") "#ast-output")
-;       data (clj->js {:data @ast-obj})]
-;       (.log js/console data))
-
-(defn submit-refresh []
-  (.jsonViewer @json-div (clj->js (ast @source-code))))
-
 (defn submit-bar []
   [:div#submit-bar
     [:input {:type "submit"
-             :on-click submit-refresh}]
+             :on-click #(.jsonViewer (js/jQuery "#ast-output") (clj->js (ast @source-code)))}]
     [:div#github-link>a {:href "https://github.com/lincoln-b/rage"} "view the source for this page"]])
 
 (defn ast-output-area []
-  (reagent/create-class
-    {:render (fn [] [:div#ast-output {:ref "tree"}])
-     :component-did-mount #(reset! json-div ((js* "$") (reagent/dom-node %)))}))
+  [:div#ast-output])
 
 (defn left-pane []
   [:div#left-pane
