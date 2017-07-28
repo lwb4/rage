@@ -2,12 +2,12 @@
   (:require
     [reagent.core :as reagent :refer [atom]]
     [rage.utilities :refer [ast to-ast clj-to-js]]
-    [clojure.pprint :as pp]))
+    [clojure.pprint :as pp]
+    [cljs.js :as cljs]))
 
 (enable-console-print!)
 
 (def source-code (atom ""))
-(def testing (atom nil))
 
 (defn information-bar []
   [:div#information-bar
@@ -32,8 +32,7 @@
 (defn submit-bar []
   [:div#submit-bar
     [:input {:type "submit"
-             :on-click #(do (.jsonViewer (js/jQuery "#ast-output") (ast @source-code))
-                            (reset! testing (clj-to-js (ast @source-code))))}]
+             :on-click #(.jsonViewer (js/jQuery "#ast-output") (ast @source-code))}]
     [:div#github-link>a {:href "https://github.com/lincoln-b/rage"} "view the source for this page"]])
 
 (defn ast-output-area []

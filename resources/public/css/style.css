@@ -1,5 +1,3 @@
-/* some style */
-
 body {
   background: darkgray;
 }
@@ -54,4 +52,10 @@ body {
 
 #container {
   display: flex;
+}
+
+/* override json viewer arrows */
+a.json-toggle:before {
+  font-size: 50%;
+  top: 25%;
 }
