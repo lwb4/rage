@@ -2,7 +2,8 @@
   (:require [cljs.reader :as r]
             [cljs.js :as c]
             [cljs.analyzer :as ana]
-            [clojure.walk :as w]))
+            [clojure.walk :as w]
+            [clojure.pprint :as pp]))
 
 (declare clj-to-js)
 
@@ -67,10 +68,14 @@
       identity)))
 
 (defn macroexpand-all [s]
-  (for [i s] (str (:value (macroexpand' i)) "\n\n")))
+  (for [i s] (:value (macroexpand' i))))
+
+(defn pretty-print [s]
+  (for [i s] (with-out-str (pp/pprint i))))
 
 (defn expand-str [code-str]
   (->> (str "[" code-str "\n]")
        (r/read-string)
        (macroexpand-all)
+       (pretty-print)
        (apply str)))
