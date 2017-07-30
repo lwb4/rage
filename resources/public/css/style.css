@@ -26,6 +26,7 @@ body {
 #right-pane {
   flex: 1;
   margin-left: 1em;
+  width: 48%;
 }
 
 #ast-output {
@@ -38,6 +39,7 @@ body {
 #left-pane {
   flex: 1;
   height: 95vh;
+  width: 48%;
 }
 
 #information-bar {
@@ -49,15 +51,21 @@ body {
   border: 3px solid gray;
   font-size: larger;
   height: 45vh;
+
 }
 
-#expanded-code-area {
-  height: 38vh;
-  border: 3px solid gray;
+#expanded-code-area div {
+  padding: .3em;
+  background: #DADADA;
   margin-top: .5em;
+}
+#expanded-code-area pre {
+  height: 33vh;
+  border: 3px solid gray;
   background: white;
   padding: .5em 1em;
   overflow: scroll;
+  margin: 0;
 }
 
 #container {

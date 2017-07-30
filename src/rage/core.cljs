@@ -23,7 +23,8 @@
           (reagent/dom-node this)
           #js {:mode "clojure"
                :lineNumbers true
-               :tabSize 2})]
+               :tabSize 2
+               :autofocus true})]
       (.on cm "change" #(reset! source-code (.getValue %))))))
 
 (defn code-input-area []
@@ -33,6 +34,7 @@
 
 (defn expanded-code-area []
   [:div#expanded-code-area
+    [:div "The macroexpanded code will be shown in this box."]
     [:pre @expanded-code]])
 
 (defn on-submit []
