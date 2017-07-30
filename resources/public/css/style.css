@@ -48,6 +48,16 @@ body {
 #code-input + div {
   border: 3px solid gray;
   font-size: larger;
+  height: 45vh;
+}
+
+#expanded-code-area {
+  height: 38vh;
+  border: 3px solid gray;
+  margin-top: .5em;
+  background: white;
+  padding: .5em 1em;
+  overflow: scroll;
 }
 
 #container {

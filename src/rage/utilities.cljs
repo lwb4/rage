@@ -1,5 +1,5 @@
 (ns rage.utilities
-  (:require [cljs.reader :as reader]
+  (:require [cljs.reader :as r]
             [cljs.js :as c]
             [cljs.analyzer :as ana]
             [clojure.walk :as w]))
@@ -48,7 +48,29 @@
       (c/empty-state) code-str nil {:eval c/js-eval :context :expr} identity)
     keywords-to-remove))
 
+(defn ast-all [s]
+  (for [i s] (to-ast (str i))))
+
 (defn ast [code-str]
   (try
-    (clj-to-js (to-ast code-str))
+    (-> (str "[" code-str "\n]")
+        (r/read-string)
+        (ast-all))
     (catch js/Error e (str e))))
+
+(defn macroexpand' [form]
+  (binding [c/*eval-fn* c/js-eval]
+    (c/eval
+      (c/empty-state)
+      `(macroexpand
+        (quote ~form))
+      identity)))
+
+(defn macroexpand-all [s]
+  (for [i s] (str (:value (macroexpand' i)) "\n\n")))
+
+(defn expand-str [code-str]
+  (->> (str "[" code-str "\n]")
+       (r/read-string)
+       (macroexpand-all)
+       (apply str)))
