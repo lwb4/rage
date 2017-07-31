@@ -60,15 +60,23 @@
     (catch js/Error e (str e))))
 
 (defn macroexpand' [form]
-  (binding [c/*eval-fn* c/js-eval]
-    (c/eval
-      (c/empty-state)
-      `(macroexpand
-        (quote ~form))
-      identity)))
+  (:value
+    (binding [c/*eval-fn* c/js-eval]
+      (c/eval
+        (c/empty-state)
+        `(macroexpand
+          (quote ~form))
+        identity))))
+
+(defn macroexpand-recur [form]
+  (let [f (macroexpand' form)
+        flat (flatten f)]
+    (if (= f flat)
+      f
+      (for [i f] (if (seqable? i) (macroexpand-recur i) i)))))
 
 (defn macroexpand-all [s]
-  (for [i s] (:value (macroexpand' i))))
+  (for [i s] (macroexpand-recur i)))
 
 (defn pretty-print [s]
   (for [i s] (with-out-str (pp/pprint i))))
@@ -78,4 +86,6 @@
        (r/read-string)
        (macroexpand-all)
        (pretty-print)
+       (interleave (repeat "\n"))
+       (rest)
        (apply str)))
