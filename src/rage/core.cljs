@@ -13,7 +13,7 @@
 
 (defn information-bar []
   [:div#information-bar
-    "Type some ClojureScript into the box below. Press Submit to see the Abstract Syntax Tree."])
+    "Type some ClojureScript into the box below. Press the button to view the abstract syntax tree."])
 
 (defn editor-did-mount []
   (fn [this]
@@ -56,8 +56,8 @@
 (defn choose-output-format []
   [:div#choose-output-format
     [:select#select-view {:on-change update-view}
-      [:option {:value "JSON"} "JSON"]
       [:option {:value "Raw"} "Raw"]
+      [:option {:value "JSON"} "JSON"]
       [:option {:value "Canvas"} "Canvas"]]])
 
 (defn submit-bar []
@@ -65,7 +65,8 @@
     [:input {:type "submit"
              :on-click on-submit}]
     [choose-output-format]
-    [:div#github-link>a {:href "https://github.com/lincoln-b/rage"} "view the source for this page"]])
+    [:div#github-link>a {:href "https://github.com/lincoln-b/rage"}
+      "view the source for this page"]])
 
 (defn ast-output-area []
   [:div#ast-output

@@ -88,7 +88,7 @@ a.json-toggle:before {
   top: 25%;
 }
 
-#raw-view {
+#json-view {
   display: none;
 }
 
