@@ -37,20 +37,41 @@
     [:div "The macroexpanded code will be shown in this box."]
     [:pre @expanded-code]])
 
+(defn update-view []
+  (let [select (.getElementById js/document "select-view")
+        raw (.getElementById js/document "raw-view")
+        json (.getElementById js/document "json-view")
+        canvas (.getElementById js/document "canvas-view")]
+    (doseq [i [raw json canvas]] (set! (-> i .-style .-display) "none"))
+    (->> (condp = (.-value select) "Raw" raw "JSON" json "Canvas" canvas)
+         (#(set! (-> % .-style .-display) "block")))))
+
 (defn on-submit []
   (let [ast-raw (ast @source-code)]
-    (.jsonViewer (js/jQuery "#ast-output") (clj-to-js ast-raw))
+    (.jsonViewer (js/jQuery "#json-view") (clj-to-js ast-raw))
     (reset! ast-text (with-out-str (pp/pprint ast-raw)))
-    (reset! expanded-code (expand-str @source-code))))
+    (reset! expanded-code (expand-str @source-code))
+    (update-view)))
+
+(defn choose-output-format []
+  [:div#choose-output-format
+    [:select#select-view {:on-change update-view}
+      [:option {:value "JSON"} "JSON"]
+      [:option {:value "Raw"} "Raw"]
+      [:option {:value "Canvas"} "Canvas"]]])
 
 (defn submit-bar []
   [:div#submit-bar
     [:input {:type "submit"
              :on-click on-submit}]
+    [choose-output-format]
     [:div#github-link>a {:href "https://github.com/lincoln-b/rage"} "view the source for this page"]])
 
 (defn ast-output-area []
-  [:div#ast-output])
+  [:div#ast-output
+    [:div#json-view]
+    [:pre#raw-view @ast-text]
+    [:div#canvas-view "coming soon!"]])
 
 (defn left-pane []
   [:div#left-pane

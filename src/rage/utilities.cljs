@@ -32,7 +32,7 @@
                       (aset m (key-to-js k) (clj-to-js v)))
                     m)
          (coll? x) (let [arr (array)]
-                     (doseq [x (map clj->js x)]
+                     (doseq [x (map clj-to-js x)]
                        (.push arr x))
                      arr)
          :else x))))
